@@ -1,9 +1,35 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel='stylesheet' type='text/css' href='css/style.css'>
+        <title>Email Client</title>
     </head>
     <body>
-
+        <div id='body'>
+            <div class='header'>
+                <span>Outlook Mail</span> 
+             </div>
+             <div class='content'>
+                 <div class='left-pane'>
+                     <div class='search-bar'>
+                            <input placeholder="Search Mail and People">
+                            <i class="fas fa-search"></i>
+                     </div>
+                     <div class='folders'>
+                         <span style='margin-left: 1em;'>Folders</span>
+                         <ul>
+                             <li id='inbox'>Inbox</li>
+                             <li id='junk'>Junk Email</li>
+                             <li id='drafts'>Drafts</li>
+                             <li id='sent'>Sent Items</li>
+                             <li id='deleted'>Deleted Items</li>
+                             <li id='archive'>Archive</li>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class='right-pane'>XYZ</div>
+             </div>
+        </div>
         <script src='js/script.js'></script>
     </body>
 </html>
