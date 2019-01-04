@@ -76,3 +76,28 @@ body{
     padding:   0.5em;
     color: #3d80bb;
 }
+
+.right-pane{
+    display: flex;
+}
+
+.message-list{
+    border: 1px solid black;
+    width: 30%;
+}
+
+.message-content{
+    border: 1px solid red;
+    width: 70%;
+}
+
+.message-content div {
+    color: #03a9f4d9;
+    position: relative;
+     top: 30%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
