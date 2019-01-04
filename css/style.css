@@ -99,5 +99,15 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+}
+
+.subject{
+    color: #03a9f4d9;
+    font-size: 1em;
+}
+
+.mail-content{
+    overflow: hidden;
+    height: 1.2em;
+    font-size: 1em;
 }
