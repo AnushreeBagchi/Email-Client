@@ -82,12 +82,18 @@ body{
 }
 
 .message-list{
-    border: 1px solid black;
+    border: 1px solid lightgray;
     width: 30%;
+    overflow: hidden;
+    padding-right: 1.5em;
+}
+
+.mail{
+    margin: 1em;
 }
 
 .message-content{
-    border: 1px solid red;
+    border: 1px solid white;
     width: 70%;
 }
 
@@ -110,4 +116,8 @@ body{
     overflow: hidden;
     height: 1.2em;
     font-size: 1em;
+}
+
+.hide{
+    display: none  !important;
 }

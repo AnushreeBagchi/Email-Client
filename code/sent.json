@@ -1,0 +1,14 @@
+[
+	{
+		"mId": "guid-5",
+		"unread": true,
+		"subject" : "Invitation: Belfrics",
+		"content" : "Telephonic round of Interview scheduled on 5th Jan at 12:00 PM with Interviewer: SAI KUMAR. </br> Please find attached Job Description for your reference. "
+	},
+	{
+		"mId": "guid-6",
+		"unread": false,
+		"subject" : "Empower your future",
+		"content" : "Hi Anushree,</br>Just thought we'd let you know that Akhil Kittur, Human Resources at Simplotel just viewed your resume on Instahyre for a Frontend JS Engineer job.</br>They will get in touch by email or phone if your profile is found suitable for the role!</br>You can view the detailed recruiter activity on your profile by clicking here.</br>Thanks,</br>The Instahyre Team"
+	}
+]
