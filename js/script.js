@@ -1,8 +1,9 @@
 var inbox = document.getElementById('inbox');
 var junk = document.getElementById('junk');
 var sent = document.getElementById('sent');
-// var junk = document.getElementById('junk');
-// var junk = document.getElementById('junk');
+var archive = document.getElementById('archive');
+var deleted = document.getElementById('deleted');
+
 var url;
 
 function onClick(url) {
@@ -37,7 +38,9 @@ function onMailClick(){
 
 function bold(obj){
     $('.folder').css('font-weight','normal');
+    $('.folder').css('background','#EEEEEE');
     obj.css('font-weight', 'bold');
+    obj.css('background', '#2196f352');
 };
 
 // Inbox
@@ -60,6 +63,22 @@ junk.addEventListener('click', function () {
 //sent items
 sent.addEventListener('click', function () {
     url = 'code/sent.json';
+    bold($(this));
+    onClick(url);
+
+});
+
+//archive
+archive.addEventListener('click', function () {
+    url = 'code/archive.json';
+    bold($(this));
+    onClick(url);
+
+});
+
+//deleted
+deleted.addEventListener('click', function () {
+    url = 'code/deleted.json';
     bold($(this));
     onClick(url);
 

@@ -50,6 +50,7 @@ body{
 
 .folders ul{
     list-style-type: none;
+    padding:0;
 }
 .folders  {
     padding-top: 2em;
@@ -58,7 +59,10 @@ body{
 }
 
 .folders li{
-    margin: 1em;
+    margin: 0.5em;
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .search-bar{
