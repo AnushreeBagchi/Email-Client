@@ -26,13 +26,14 @@ function onClick(url) {
 
 function onMailClick(){
     $('.default-content').removeClass('hide');
-    $('.message-body').empty();
+    $('.message-body-subject').empty();
+    $('.message-body-content').empty();
     $('.mail').on('click',function(){
-        // console.log();
         $('.default-content').addClass('hide');
-        $('.message-body').empty();
-        // debugger;
-        $('.message-body').append($(this).children('.mail-content').text());
+        $('.message-body-subject').empty();
+        $('.message-body-content').empty();
+        $('.message-body-subject').append($(this).children('.subject').text()+ "<br/>");      
+        $('.message-body-content').append($(this).children('.mail-content').text());
     });
 }
 

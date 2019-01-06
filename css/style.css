@@ -67,18 +67,19 @@ body{
 
 .search-bar{
     display: flex;
-    background-color: aliceblue;
+    /* background-color: #acd1ef7a; */
 }
 
 .search-bar input{
     border: 0;
     padding: 1em;
-    background-color: aliceblue;
+    background-color: #acd1ef7a;
 }
 
 .search-bar i{
-    padding:   0.5em;
+    padding: 0.5em;
     color: #3d80bb;
+    background: #d7e9f7;
 }
 
 .right-pane{
@@ -94,6 +95,8 @@ body{
 
 .mail{
     margin: 1em;
+    border-bottom: 1px solid lightgrey;
+    padding: 0;
 }
 
 .message-content{
@@ -101,10 +104,10 @@ body{
     width: 70%;
 }
 
-.message-content div {
+.default-content  {
     color: #03a9f4d9;
     position: relative;
-     top: 30%; 
+    top: 30%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,4 +127,17 @@ body{
 
 .hide{
     display: none  !important;
+}
+
+.message-body   {
+    margin: 2em;
+    color: black !important;
+}
+
+.message-body-subject{
+    margin: 1em;
+}
+
+.message-body-content{
+    margin: 1em;
 }
