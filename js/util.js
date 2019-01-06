@@ -2,8 +2,7 @@ var app = app || {};
 app.utils = {};
 (function (utils) {
 
-    utils.bold_folders=function($currentElement){
-        // debugger;
+    utils.bold_folders=function($currentElement){        
         $('.folder').css('font-weight','normal');
         $('.folder').css('background','#EEEEEE');
         $currentElement.css('font-weight', 'bold');
@@ -20,4 +19,28 @@ app.utils = {};
         $('.message-body-subject').empty();
         $('.message-body-content').empty();
     };
+
+    utils.right_message_data= function ($currentElement){
+        $('.message-body-subject').append($currentElement.children('.subject').text()+ "<br/>");      
+        $('.message-body-content').append($currentElement.children('.mail-content').text());
+    }
+
+    utils.hideDefaultContent= function (){
+        $('.default-content').removeClass('hide');
+    }
+
+    utils.showDefaultContent= function (){
+        $('.default-content').addClass('hide');
+    }
+
+    utils.setEventMailClick= function (callbackFn){
+        $('.mail').on('click', callbackFn);
+    }
+
+    utils.renderMailData = function (data){
+        for (var i = 0; i < data.length; i++) {
+            $('.message-list').append(`<div class ='mail'><p class='subject'> ${data[i].subject} </p> 
+            <p class='mail-content'>${data[i].content}</p><br></div>`);
+        };
+    }
 })(app.utils);

@@ -15,78 +15,74 @@ var app = app || {};
         // nothing to do
     };
     function onFolderClick(url) {
-
         fetch(url)
             .then(function (response) {
                 return response.json();
             })
             .then(data => {
                 utils.clear_message_list(); // clear exiting data 
-                for (var i = 0; i < data.length; i++) {
-                    $('.message-list').append(`<div class ='mail'><p class='subject'> ${data[i].subject} </p> 
-                    <p class='mail-content'>${data[i].content}</p><br></div>`);
-                };
+                utils.renderMailData (data);
                 // on click mail
-                onMailClick();
+                setupMailClick();
             });
     };
-    function onMailClick(){
-        $('.default-content').removeClass('hide');
+    function setupMailClick() {
+        utils.hideDefaultContent();
         utils.clear_message_content();
-        $('.mail').on('click',function(){
-            $('.default-content').addClass('hide');
-            utils.clear_message_content();
-            $('.message-body-subject').append($(this).children('.subject').text()+ "<br/>");      
-            $('.message-body-content').append($(this).children('.mail-content').text());
-        });
+        utils.setEventMailClick(onMailClick);
+
     };
 
-//inbox
+    function onMailClick() {
+        $currentElement = $(this);
+        utils.showDefaultContent();
+        utils.clear_message_content();
+        utils.right_message_data($currentElement);
+    };
 
-inbox.addEventListener('click', function () {
-    var $currentElement = $(this);
-    url = 'code/inbox.json';
-    utils.bold_folders($currentElement);
-    onFolderClick(url);
-});
+    //inbox
+    inbox.addEventListener('click', function () {
+        var $currentElement = $(this);
+        url = 'code/inbox.json';
+        utils.bold_folders($currentElement);
+        onFolderClick(url);
+    });
 
-// Junk items
+    // Junk items
+    junk.addEventListener('click', function () {
+        var $currentElement = $(this);
+        url = 'code/spam.json';
+        utils.bold_folders($currentElement);
+        onFolderClick(url);
+    });
 
-junk.addEventListener('click', function () {
-    url = 'code/spam.json';
-    utils.bold_folders();
-    onFolderClick(url);
+    //sent items
+    sent.addEventListener('click', function () {
+        var $currentElement = $(this);
+        url = 'code/sent.json';
+        utils.bold_folders($currentElement);
+        onFolderClick(url);
+    });
 
-});
+    //archive
+    archive.addEventListener('click', function () {
+        var $currentElement = $(this);
+        url = 'code/archive.json';
+        utils.bold_folders($currentElement);
+        onFolderClick(url);
+    });
 
-//sent items
-sent.addEventListener('click', function () {
-    url = 'code/sent.json';
-    utils.bold_folders();
-    onFolderClick(url);
-
-});
-
-//archive
-archive.addEventListener('click', function () {
-    url = 'code/archive.json';
-    utils.bold_folders();
-    onFolderClick(url);
-
-});
-
-//deleted
-deleted.addEventListener('click', function () {
-    url = 'code/deleted.json';
-    utils.bold_folders();
-    onFolderClick(url);
-
-});
+    //deleted
+    deleted.addEventListener('click', function () {
+        var $currentElement = $(this);
+        url = 'code/deleted.json';
+        utils.bold_folders($currentElement);
+        onFolderClick(url);
+    });
 
     init();
+
 })(app);
 
 
 
-
-// Inbox
