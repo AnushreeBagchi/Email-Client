@@ -10,6 +10,7 @@ var app = app || {};
     var sent = document.getElementById('sent');
     var archive = document.getElementById('archive');
     var deleted = document.getElementById('deleted');
+    var unread_mails= document.getElementsByClassName('unread-mail');
     var jsonList=[{folder:'inbox',json:'code/inbox.json'},
                     {folder:'junk',json:'code/spam.json'},
                     {folder:'sent',json:'code/sent.json'},
@@ -19,7 +20,6 @@ var app = app || {};
     function init() {
          //Populate unread  mails
         for (var i =0;i<jsonList.length;i++){
-            // debugger;
             (function(i){
                 fetch(jsonList[i].json).then(function(response){
                     return response.json();
@@ -42,6 +42,10 @@ var app = app || {};
                 // on click mail
                 setupMailClick();
 
+                 // add listener to unread mails
+                // unread_mails.addEventListener('click', function (){
+                // utils.updateUnreadCount();
+                // });
                 
             });
     };
@@ -49,8 +53,17 @@ var app = app || {};
         utils.hideDefaultContent();
         utils.clear_message_content();
         utils.setEventMailClick(onMailClick);
+        utils.setUnreadMailClick(updateUnreadCount);
 
     };
+
+    function updateUnreadCount(){
+        $currentElement = $(this);
+        console.log('clicked');
+        // debugger;
+        utils.readMail($currentElement);
+
+    }
 
     function onMailClick() {
         $currentElement = $(this);
@@ -58,8 +71,6 @@ var app = app || {};
         utils.clear_message_content();
         utils.right_message_data($currentElement);
     };
-
-
 
 
     //inbox

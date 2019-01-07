@@ -37,11 +37,23 @@ app.utils = {};
         $('.mail').on('click', callbackFn);
     }
 
+    utils.setUnreadMailClick=function (callbackFn){
+       $('.unread-mail').on('click',callbackFn);
+    }
+
+
     utils.renderMailData = function (data) {
+
         for (var i = 0; i < data.length; i++) {
-            $('.message-list').append(`<div class ='mail'><p class='subject'> ${data[i].subject} </p> 
+            if (data[i].unread==false){
+                $('.message-list').append(`<div class ='mail'><p class='subject'> ${data[i].subject} </p> 
+                 <p class='mail-content'>${data[i].content}</p><br></div>`);
+            }
+            else{
+                $('.message-list').append(`<div class ='mail unread-mail'><p class='subject'> ${data[i].subject} </p> 
             <p class='mail-content'>${data[i].content}</p><br></div>`);
-        };
+            }
+        }
     }
 
     utils.unreadMails= function (folder,data){
@@ -54,5 +66,11 @@ app.utils = {};
         }
         $(`#${folder} span.unread`).text(count);
     }
+
+    utils.readMail= function ($currentElement){
+        $currentElement.removeClass('unread-mail');
+    }
+
+    
 })(app.utils);
 

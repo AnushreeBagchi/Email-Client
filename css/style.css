@@ -151,3 +151,7 @@ body{
     color: #03a9f4d9;
     font-style: italic;
 }
+
+.unread-mail{
+   font-weight: bold;
+}
