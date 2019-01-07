@@ -10,10 +10,27 @@ var app = app || {};
     var sent = document.getElementById('sent');
     var archive = document.getElementById('archive');
     var deleted = document.getElementById('deleted');
+    var jsonList=[{folder:'inbox',json:'code/inbox.json'},
+                    {folder:'junk',json:'code/spam.json'},
+                    {folder:'sent',json:'code/sent.json'},
+                    {folder:'archive',json:'code/archive.json'},
+                    {folder:'deleted',json:'code/deleted.json'}];
     var url;
     function init() {
-        // nothing to do
+         //Populate unread  mails
+        for (var i =0;i<jsonList.length;i++){
+            // debugger;
+            (function(i){
+                fetch(jsonList[i].json).then(function(response){
+                    return response.json();
+                })
+                .then(data=>{
+                    utils.unreadMails(jsonList[i].folder,data);
+                }); 
+            }(i))
+        }
     };
+    
     function onFolderClick(url) {
         fetch(url)
             .then(function (response) {
@@ -21,9 +38,11 @@ var app = app || {};
             })
             .then(data => {
                 utils.clear_message_list(); // clear exiting data 
-                utils.renderMailData (data);
+                utils.renderMailData(data);                            
                 // on click mail
                 setupMailClick();
+
+                
             });
     };
     function setupMailClick() {
@@ -39,6 +58,9 @@ var app = app || {};
         utils.clear_message_content();
         utils.right_message_data($currentElement);
     };
+
+
+
 
     //inbox
     inbox.addEventListener('click', function () {

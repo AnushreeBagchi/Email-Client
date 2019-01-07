@@ -56,6 +56,7 @@ body{
     padding-top: 2em;
     background: #d3d3d363;
     height: 100vh;
+    position: relative;
 }
 
 .folders li{
@@ -117,6 +118,8 @@ body{
 .subject{
     color: #03a9f4d9;
     font-size: 1em;
+    overflow: hidden;
+    height: 1.2em;
 }
 
 .mail-content{
@@ -140,4 +143,11 @@ body{
 
 .message-body-content{
     margin: 1em;
+}
+
+.unread{
+    position: absolute;
+    right: 1em;
+    color: #03a9f4d9;
+    font-style: italic;
 }
