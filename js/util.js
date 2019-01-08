@@ -49,11 +49,11 @@ app.utils = {};
 
         for (var i = 0; i < data.length; i++) {
             if (data[i].unread==false){
-                $('.message-list').append(`<div class ='mail'><p class='subject'> ${data[i].subject} </p> 
+                $('.message-list').append(`<div class ='mail' id=${data[i].mId}><p class='subject'> ${data[i].subject} </p> 
                  <p class='mail-content'>${data[i].content}</p><br></div>`);
             }
             else{
-                $('.message-list').append(`<div class ='mail unread-mail'><p class='subject'> ${data[i].subject} </p> 
+                $('.message-list').append(`<div class ='mail unread-mail' id=${data[i].mId}><p class='subject'> ${data[i].subject} </p> 
             <p class='mail-content'>${data[i].content}</p><br></div>`);
             }
         }
