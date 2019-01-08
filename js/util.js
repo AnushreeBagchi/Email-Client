@@ -14,6 +14,10 @@ app.utils = {};
         $('.message-list').empty();
     };
 
+    utils.getId=function ($currentElement){
+        return $currentElement.attr('id')
+    }
+
     //clear right pane- message content area
     utils.clear_message_content = function () {
         $('.message-body-subject').empty();
@@ -40,7 +44,6 @@ app.utils = {};
     utils.setUnreadMailClick=function (callbackFn){
        $('.unread-mail').on('click',callbackFn);
     }
-
 
     utils.renderMailData = function (data) {
 
