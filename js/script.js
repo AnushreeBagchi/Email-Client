@@ -10,72 +10,41 @@ var app = app || {};
     var sent = document.getElementById('sent');
     var archive = document.getElementById('archive');
     var deleted = document.getElementById('deleted');
+    var  folder=document.getElementsByClassName('folder');
     var unread_mails= document.getElementsByClassName('unread-mail');
-    var url ;var data;
+    var url ;
     function init() {
-         //Populate unread  mails
-        // for (var i =0;i<jsonList.length;i++){
-        //     (function(i){
-        //         fetch(jsonList[i].json).then(function(response){
-        //             return response.json();
-        //         })
-        //         .then(data=>{
-        //             utils.unreadMails(jsonList[i].folder,data);
-        //         }); 
-        //     }(i))
-        // }
-
-        // models.getInbox().then(data=>{
-        //     console.log(data);
-        // })
-
+        
         models.getAllData().then(data=> {
-            debugger;
-            console.log(data);
+            //Populate unread  mails
+            for (var key in data){
+                utils.unreadMails(key,data[key]);
+            }
+            
         });
-        
-        
-        // .then(data=>{
-        //     console.log(data);
-        // });
     };
     
-    // function onFolderClick(url) {
-       
-    //     fetch(url)
-    //         .then(function (response) {
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             utils.clear_message_list(); // clear exiting data 
-    //             utils.renderMailData(data);                            
-    //             // on click mail
-    //             setupMailClick();
-    //             // models.getInbox().then(() => {
-    //             //     var data  = models.getUnreadCountForInbox()
-    //             // })
-    //              // add listener to unread mails
-    //             // unread_mails.addEventListener('click', function (){
-    //             // utils.updateUnreadCount();
-    //             // });
-                
-    //         });
-    // };
 
+    //add event listeners to folder click
+    for (var i = 0; i < folder.length; i++) {
+        folder[i].addEventListener('click', setupFolderClick, false);
+    }
+
+    function setupFolderClick(){
+        var $currentElement = $(this);
+        var id= utils.getId($currentElement);
+        utils.bold_folders($currentElement);
+        onFolderClick(id);
+    }
+    
     function onFolderClick (id){
-        var fetchedData;
-        if(id='inbox'){
-            models.getInbox().then(data=>{
-                fetchedData=data;
+            models.getAllData().then(data=>{
                 utils.clear_message_list();
-                utils.renderMailData(fetchedData);    
+                utils.renderMailData(data[id]); 
                 // on click mail
                 setupMailClick();
-            });
+            })
         }
-       
-
-    }
     function setupMailClick() {
         utils.hideDefaultContent();
         utils.clear_message_content();
@@ -100,45 +69,7 @@ var app = app || {};
     };
 
 
-    //inbox
-    inbox.addEventListener('click', function () {
-        var $currentElement = $(this);
-        var id= utils.getId($currentElement);
-        utils.bold_folders($currentElement);
-        onFolderClick(id);
-    });
-
-    // Junk items
-    junk.addEventListener('click', function () {
-        var $currentElement = $(this);
-        url = 'code/spam.json';
-        utils.bold_folders($currentElement);
-        onFolderClick(url);
-    });
-
-    //sent items
-    sent.addEventListener('click', function () {
-        var $currentElement = $(this);
-        url = 'code/sent.json';
-        utils.bold_folders($currentElement);
-        onFolderClick(url);
-    });
-
-    //archive
-    archive.addEventListener('click', function () {
-        var $currentElement = $(this);
-        url = 'code/archive.json';
-        utils.bold_folders($currentElement);
-        onFolderClick(url);
-    });
-
-    //deleted
-    deleted.addEventListener('click', function () {
-        var $currentElement = $(this);
-        url = 'code/deleted.json';
-        utils.bold_folders($currentElement);
-        onFolderClick(url);
-    });
+    
 
     init();
 

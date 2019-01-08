@@ -28,10 +28,16 @@ app.models = {};
         };
 
         return Promise.all(promises).then(data=>{
+            // debugger;
             return {inbox, junk,sent, archive,deleted};
         });
+    };
 
-    }
+        models.getInbox = function () {
+            return new Promise((resolve)=>{
+                return {inbox};
+            });
+        }
 
    
 
