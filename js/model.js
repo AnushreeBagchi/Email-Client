@@ -49,12 +49,11 @@ app.models = {};
         return  archive ;
     }
 
-    models.getsent = function () {
+    models.getSent = function () {
         return  sent ;
     }
 
     models.updateInbox= function (id){
-        
         for (let i=0;i<inbox.length;i++){
             if(id===inbox[i].mId){
                 inbox[i].unread=false;
@@ -63,8 +62,7 @@ app.models = {};
         console.log(inbox);
     }
 
-    models.updateJunk= function (id){
-        
+    models.updateJunk= function (id){    
         for (let i=0;i<junk.length;i++){
             if(id===junk[i].mId){
                 junk[i].unread=false;

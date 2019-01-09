@@ -10,13 +10,11 @@ var app = app || {};
     var unread_mails = document.getElementsByClassName('unread-mail');
     var url; var folderClicked;
     function init() {
-
         models.getAllData().then(data => {
             //Populate unread  mails
             for (var key in data) {
                 utils.unreadMails(key, data[key]);
             }
-
         });
     };
 
@@ -34,12 +32,27 @@ var app = app || {};
 
     function onFolderClick(id) {
         folderClicked = id;
-        models.getAllData().then(data => {
-            utils.clear_message_list();
-            utils.renderMailData(data[id]);
-            // on click mail
-            setupMailClick();
-        })
+        switch (folderClicked) {
+            case 'inbox':
+                folderData=models.getInbox();
+                break;
+            case 'junk':
+                folderData=models.getJunk();
+                break;
+            case 'deleted':                
+                folderData=models.getDeleted();
+                break;
+            case 'sent':                
+                folderData=models.getSent();
+                break;
+            case 'archive':
+                folderData=models.getArchive();
+                break;
+        }
+        utils.clear_message_list();
+        utils.renderMailData(folderData);
+        // on click mail
+        setupMailClick();
     }
 
     function setupMailClick() {
@@ -80,7 +93,7 @@ var app = app || {};
                 folderData=models.getJunk();
                 break;
             case 'deleted':
-                models.updataDeleted(id);
+                models.updateDeleted(id);
                 folderData=models.getDeleted();
                 break;
             case 'sent':
@@ -92,13 +105,9 @@ var app = app || {};
                 folderData=models.getArchive();
                 break;
         }
-
         utils.unreadMails(folderClicked,folderData );
-
     }
-
     init();
-
 })(app);
 
 
