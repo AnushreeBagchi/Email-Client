@@ -12,7 +12,7 @@ var app = app || {};
     var deleted = document.getElementById('deleted');
     var  folder=document.getElementsByClassName('folder');
     var unread_mails= document.getElementsByClassName('unread-mail');
-    var url ;
+    var url ;var folderClicked;
     function init() {
         
         models.getAllData().then(data=> {
@@ -37,6 +37,7 @@ var app = app || {};
     }
     
     function onFolderClick (id){
+            folderClicked=id;
             models.getAllData().then(data=>{
                 utils.clear_message_list();
                 utils.renderMailData(data[id]); 
@@ -44,46 +45,49 @@ var app = app || {};
                 setupMailClick();
             })
         }
+      
     function setupMailClick() {
         utils.hideDefaultContent();
         utils.clear_message_content();
         utils.setEventMailClick(onMailClick);
-        utils.setUnreadMailClick(setReadMail);
+        //  utils.setUnreadMailClick(setReadMail);
 
+    };
+
+    function onMailClick() {
+        $currentElement = $(this);
+       
+        var abc= $currentElement.attr('class');
+        utils.showDefaultContent();
+        utils.clear_message_content();
+        utils.right_message_data($currentElement);
+        // setReadMail();
+        if($currentElement.hasClass('unread-mail')){
+            setReadMail();
+        }
     };
 
     function setReadMail(){
         $currentElement = $(this);
-        console.log($currentElement);
         var id= utils.getId($currentElement);
+        debugger;
         utils.readMail($currentElement);
         updateUnreadCount(id);
     }
-function updateUnreadCount($currentElement,id){
-  debugger;
+function updateUnreadCount(id){
   models.getAllData().then(data=>{
-    for(var folder in data)
-    {
-        for(var i=0;i<data[folder].length;i++)
+        for(var i=0;i<data[folderClicked].length;i++)
         {
-            if(data[folder][i].mId==id){
-                data[folder][i].unread = false;
-                console.log(data[folder][i]);
-                utils.unreadMails(folder,data[folder]);
+            if(data[folderClicked][i].mId==id){
+                data[folderClicked][i].unread = false;
+                console.log(data[folderClicked][i]);
+                utils.unreadMails(folderClicked,data[folderClicked]);
             }
         }
     }
-  });
-  
+)}
 
-}
 
-    function onMailClick() {
-        $currentElement = $(this);
-        utils.showDefaultContent();
-        utils.clear_message_content();
-        utils.right_message_data($currentElement);
-    };
 
 
     
