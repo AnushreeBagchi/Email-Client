@@ -60,11 +60,10 @@ app.utils = {};
     }
 
     utils.unreadMails= function (folder,data){
-        // debugger;
-        var count=0;
-        for(var i =0;i< data.length;i++){
-            if(data[i].unread==true){
-                count++
+        let count=0;
+        for(let i =0;i< data.length;i++){
+            if(data[i].unread===true){
+                count++;
             }
         }
         $(`#${folder} span.unread`).text(count);
