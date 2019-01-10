@@ -5,7 +5,7 @@
         <title>Email Client</title>
     </head>
     <body>
-        <div id='body'>
+        <div id='body' >
             <div class='header'>
                 <span>Outlook Mail</span> 
              </div>
@@ -24,7 +24,9 @@
                              <li class='folder' id='deleted'>Deleted Items <span class='unread'></span></li>
                              <li class='folder' id='archive'>Archive <span class='unread'></span></li>
                          </ul>
+                         <div id='compose'><span>+</span></div>
                      </div>
+                     
                  </div>
                  <div class='right-pane'>
                      <div class='message-list'>
@@ -44,6 +46,33 @@
                         </div>
                  </div>
              </div>
+        </div>
+        <div class='new-mail hide'>
+            <div class='outer'>
+                <div class='header'>
+                    <span>New Message</span>
+                    <div class='close-window'>X</div>
+                </div>
+                <div class='to-bar'>
+                    <span>To
+                        <input class='to'/>
+                    </span>
+                    <span class='cc'>Cc</span>
+                    <span class='bcc'>Bcc</span>
+                </div>
+                <div class='subject-bar'>
+                    <span>Subject
+                        <input class='subject'/>
+                    </span>
+                </div>
+                <div class='new-mail-body'>
+                    New mail content
+                </div>
+                <div class='send-bar'>
+                    <div class='send'>Send</div>
+                    <div class='delete'>Delete</div>
+                </div>
+            </div>
         </div>
         <script
         src="https://code.jquery.com/jquery-3.3.1.js"

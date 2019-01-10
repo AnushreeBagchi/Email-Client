@@ -73,6 +73,14 @@ app.utils = {};
         $currentElement.removeClass('unread-mail');
     }
 
+    utils.setEventCompose= function(callback){
+        $('#compose').on('click',callback);
+    }
+
+    utils.popNewWindow= function (){
+            $('.new-mail').removeClass('hide');
+    }
+
     
 })(app.utils);
 

@@ -16,8 +16,15 @@ var app = app || {};
                 utils.unreadMails(key, data[key]);
             }
         });
+
+        utils.setEventCompose(onClickCompose);
     };
 
+    //add event liteners for new mails
+    
+    function onClickCompose(){
+        utils.popNewWindow();
+    }
     //add event listeners to folder click
     for (var i = 0; i < folder.length; i++) {
         folder[i].addEventListener('click', setupFolderClick, false);
