@@ -24,6 +24,7 @@ var app = app || {};
     
     function onClickCompose(){
         utils.popNewWindow();
+        utils.setEventCloseCompose();
     }
     //add event listeners to folder click
     for (var i = 0; i < folder.length; i++) {

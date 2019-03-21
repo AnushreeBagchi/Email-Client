@@ -77,8 +77,31 @@ app.utils = {};
         $('#compose').on('click',callback);
     }
 
+    utils.setEventCloseCompose=function(){     
+        //clear listners  
+        $('.close-window').off();
+        $('.delete').off();
+        //add listners
+        $('.close-window').on('click',utils.closeComposeWindow);
+        $('.delete').on('click',utils.closeComposeWindow);
+    }
+
     utils.popNewWindow= function (){
-            $('.new-mail').removeClass('hide');
+        $('.new-mail').removeClass('hide');
+    }
+
+    utils.closeComposeWindow=function(){        
+        let result = confirm("Discard changes??");        
+        if(result) {
+
+            utils.clearInputs();
+            $('.new-mail').addClass('hide');            
+        }
+    }
+
+    utils.clearInputs=function(){
+        $('.to').val("");
+        $('.mail-subject').val("");       
     }
 
     

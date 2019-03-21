@@ -52,7 +52,7 @@ body{
 
 .folders ul{
     list-style-type: none;
-    padding:0;
+    padding: 0;
 }
 .folders  {
     padding-top: 2em;
@@ -170,6 +170,7 @@ body{
     width: 4em;
     height: 4em;
     align-items: center;
+    color: white;
 }
 
 .hide{
@@ -202,29 +203,39 @@ body{
     margin: 0.4em;
 }
 
-.to, .subject{
+.to, .mail-subject{
     width: 85%;
     margin: 0.5em;
+    outline: none;
     border: none;
    
 }
 
 .to-bar, .subject-bar{
     border-bottom: 1px solid lightgrey;
+    padding: 0.5em;
+    color: lightgrey;
    
 }
 
 .send-bar{
     display: flex;
     position:fixed;
-    bottom: 0;
-    border-top: 1px solid lightgrey;
+    bottom: 0;    
     width: 100%;
     height: 2em;
 }
 
+.delete, .send{
+    background-color: #2196f3;
+    color: white;
+    margin-left: 1em;
+    border-radius: 0.3em;
+    border: none;
+    width: 5em;
+}
+
 .delete{
     position: relative;
-    right:0;
-
+    left: 37%;
 }
