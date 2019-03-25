@@ -58,8 +58,7 @@ app.models = {};
             if(id===inbox[i].mId){
                 inbox[i].unread=false;
             }
-        }
-        console.log(inbox);
+        }        
     }
 
     models.updateJunk= function (id){    
@@ -67,8 +66,7 @@ app.models = {};
             if(id===junk[i].mId){
                 junk[i].unread=false;
             }
-        }
-        console.log(junk);
+        }        
     }
 
     models.updateSent= function (id){
@@ -77,8 +75,7 @@ app.models = {};
             if(id===sent[i].mId){
                 sent[i].unread=false;
             }
-        }
-        console.log(sent);
+        }        
     }
 
     models.updateArchive= function (id){
@@ -87,8 +84,7 @@ app.models = {};
             if(id===archive[i].mId){
                 archive[i].unread=false;
             }
-        }
-        console.log(archive);
+        }        
     }
 
     models.updateDeleted= function (id){
@@ -97,13 +93,12 @@ app.models = {};
             if(id===deleted[i].mId){
                 deleted[i].unread=false;
             }
-        }
-        console.log(deleted);
+        }        
     }
 
-
-
-
-
+    models.AddToSentItems= function(data){       
+        sent.push(data);
+        console.log(sent);
+    }
 
 })(app.models);

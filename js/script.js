@@ -20,12 +20,29 @@ var app = app || {};
         utils.setEventCompose(onClickCompose);
     };
 
-    //add event liteners for new mails
-    
+    //add event liteners for new mails    
     function onClickCompose(){
         utils.popNewWindow();
         utils.setEventCloseCompose();
+        utils.setNewMailData(checkNewMailData);
     }
+
+     function checkNewMailData(data){                
+        if(data.toRecipient===undefined || data.toRecipient.length===0){
+            alert('Enter Recipient');
+        }
+
+        else if(data.subject===undefined || data.subject.length===0 ){
+            let result = confirm('Do you want to send this mail without subject??');
+            if(result) {
+                utils.sendEmail(data, models.AddToSentItems);
+            }
+        }        
+        else{
+            utils.sendEmail(data,models.AddToSentItems);
+        }
+    };
+
     //add event listeners to folder click
     for (var i = 0; i < folder.length; i++) {
         folder[i].addEventListener('click', setupFolderClick, false);
@@ -78,7 +95,6 @@ var app = app || {};
         utils.right_message_data($currentElement);
         // setReadMail();
         if ($currentElement.hasClass('unread-mail')) {
-
             setReadMail($currentElement);
         }
     };

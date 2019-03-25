@@ -101,7 +101,43 @@ app.utils = {};
 
     utils.clearInputs=function(){
         $('.to').val("");
-        $('.mail-subject').val("");       
+        $('.mail-subject').val("");     
+        $('.email-body').val("");  
+    }
+
+    utils.setNewMailData= function(callback){
+        var mail={
+            mId: "guid-"+Math.floor((Math.random() * 100) + 1),  //generate random numbers from 0 to 100 
+            unread: false
+        };        
+        $('.to').on('change',()=>{
+            mail.toRecipient= $('.to').val();
+        });
+        $('.cc').on('change',()=>{
+            mail.ccRecipient= $('.cc').val();
+        });
+        $('.bcc').on('change',()=>{
+            mail.bccRecipient= $('.bcc').val();        
+        });        
+        $('.mail-subject').on('change',()=>{
+            mail.subject= $('.mail-subject').val();           
+        });
+        $('.email-body').on('change',()=>{
+            mail.content=$('.email-body').val();
+        });
+        $('.send').on('click',()=>{            
+            //check whether valid data entered
+            callback(mail);
+        });        
+    }
+
+
+    utils.sendEmail=function(data, callback){
+        $('.new-mail').addClass('hide'); // close the compose mail window
+        utils.clearInputs(); 
+        console.log("Email sent");        
+        callback(data);
+        
     }
 
     
