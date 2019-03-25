@@ -24,6 +24,7 @@ var app = app || {};
     function onClickCompose(){
         utils.popNewWindow();
         utils.setEventCloseCompose();
+        utils.setEventCcBcc();
         utils.setNewMailData(checkNewMailData);
     }
 
@@ -90,6 +91,7 @@ var app = app || {};
 
     function onMailClick() {
         $currentElement = $(this);
+        debugger;
         utils.showDefaultContent();
         utils.clear_message_content();
         utils.right_message_data($currentElement);

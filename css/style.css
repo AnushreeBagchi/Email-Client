@@ -203,7 +203,7 @@ body{
     margin: 0.4em;
 }
 
-.to, .mail-subject{
+.to, .mail-subject, .cc, .bcc{
     width: 85%;
     margin: 0.5em;
     outline: none;
@@ -211,7 +211,7 @@ body{
    
 }
 
-.to-bar, .subject-bar{
+.to-bar, .subject-bar, .cc-bar, .bcc-bar{
     border-bottom: 1px solid lightgrey;
     padding: 0.5em;
     color: lightgrey;
@@ -245,4 +245,12 @@ body{
     height: 60%;
     outline: none;
     border: none;
+}
+
+.ccBtn, .bccBtn{
+    border: none;
+    outline: none;
+    background-color: white;
+    color: lightgrey;
+    width: 1.5em;
 }

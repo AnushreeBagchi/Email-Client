@@ -25,6 +25,8 @@ app.utils = {};
     };
 
     utils.right_message_data = function ($currentElement) {
+        debugger;
+        $('.message-body-toRecipient').append($currentElement.children('.toRecipient').text() + "<br/>");
         $('.message-body-subject').append($currentElement.children('.subject').text() + "<br/>");
         $('.message-body-content').append($currentElement.children('.mail-content').text());
     }
@@ -139,6 +141,15 @@ app.utils = {};
         callback(data);
         
     }
+
+    utils.setEventCcBcc = function(){
+        $('.ccBtn').on('click',()=>{            
+            $('.cc-bar').removeClass('hide');
+        });
+        $('.bccBtn').on('click',()=>{
+            $('.bcc-bar').removeClass('hide');
+        });
+    };
 
     
 })(app.utils);
